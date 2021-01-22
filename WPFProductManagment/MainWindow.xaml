@@ -5,8 +5,21 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFProductManagment"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-
-    </Grid>
+        Title="Product Management Application" Height="750" Width="1100" FontFamily="Tahoma" Icon="Resources/img_153497.png">
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="*"/>
+    </Grid.RowDefinitions>
+    <DockPanel Background="Aqua" Margin="5">
+      <Menu DockPanel.Dock="Top" Margin="25" Background="Aqua">
+        <Image Source="Resources/img_153497.png" Height="50" Width="50" />
+        <MenuItem Height="50" Width="50" Header="Home" FontFamily="Tahoma" FontWeight="Black" Margin="10" Name="BtnHome"/>
+        <MenuItem Height="50" Width="Auto"  Header="Customer" FontFamily="Tahoma" FontWeight="Black" Margin="10" Name="BtnCustomer"/>
+        <MenuItem Height="50" Width="Auto"  Header="Employee" FontFamily="Tahoma" FontWeight="Black" Margin="10" Name="BtnEmployee"/>
+        <MenuItem Height="50" Width="Auto"  Header="Products" FontFamily="Tahoma" FontWeight="Black" Margin="10" Name="BtnProducts"/>
+      </Menu>
+    </DockPanel>
+    <Border Grid.Row="1" Margin="5" Background="WhiteSmoke" Name="HomePanel" HorizontalAlignment="Stretch" BorderThickness="2" BorderBrush="Gray"></Border>
+  </Grid>
 </Window>
