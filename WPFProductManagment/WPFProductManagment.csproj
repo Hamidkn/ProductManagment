@@ -8,13 +8,24 @@
 
   <ItemGroup>
     <None Remove="img_153497 %281%29.png" />
+    <None Remove="Resources\1.jpg" />
+    <None Remove="Resources\1.png" />
+    <None Remove="Resources\Blogger-72x72.png" />
+    <None Remove="Resources\Facebook-72x72.png" />
     <None Remove="Resources\img_153497.png" />
     <None Remove="Resources\Jokes_16x16.png" />
+    <None Remove="Resources\LinkedIn-72x72.png" />
+    <None Remove="Resources\Twitter-72x72.png" />
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Resources\1.png" />
+    <Resource Include="Resources\Blogger-72x72.png" />
+    <Resource Include="Resources\Facebook-72x72.png" />
     <Resource Include="Resources\img_153497.png" />
     <Resource Include="Resources\Jokes_16x16.png" />
+    <Resource Include="Resources\LinkedIn-72x72.png" />
+    <Resource Include="Resources\Twitter-72x72.png" />
   </ItemGroup>
 
   <ItemGroup>

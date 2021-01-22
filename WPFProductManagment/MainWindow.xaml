@@ -5,21 +5,34 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFProductManagment"
         mc:Ignorable="d"
-        Title="Product Management Application" Height="750" Width="1100" FontFamily="Tahoma" Icon="Resources/img_153497.png">
+        Title="Product Management Application" Height="650" Width="1100" FontFamily="Tahoma" Icon="Resources/img_153497.png">
   <Grid>
     <Grid.RowDefinitions>
       <RowDefinition Height="Auto"/>
       <RowDefinition Height="*"/>
     </Grid.RowDefinitions>
-    <DockPanel Background="Aqua" Margin="5">
-      <Menu DockPanel.Dock="Top" Margin="25" Background="Aqua">
-        <Image Source="Resources/img_153497.png" Height="50" Width="50" />
-        <MenuItem Height="50" Width="50" Header="Home" FontFamily="Tahoma" FontWeight="Black" Margin="10" Name="BtnHome"/>
-        <MenuItem Height="50" Width="Auto"  Header="Customer" FontFamily="Tahoma" FontWeight="Black" Margin="10" Name="BtnCustomer"/>
-        <MenuItem Height="50" Width="Auto"  Header="Employee" FontFamily="Tahoma" FontWeight="Black" Margin="10" Name="BtnEmployee"/>
-        <MenuItem Height="50" Width="Auto"  Header="Products" FontFamily="Tahoma" FontWeight="Black" Margin="10" Name="BtnProducts"/>
-      </Menu>
-    </DockPanel>
-    <Border Grid.Row="1" Margin="5" Background="WhiteSmoke" Name="HomePanel" HorizontalAlignment="Stretch" BorderThickness="2" BorderBrush="Gray"></Border>
+    <Border Background="WhiteSmoke" Margin="5" BorderThickness="2" BorderBrush="Gray">
+      <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="5 " Width="auto">
+          <Button Content="Home" Height="50" Width="100"  FontFamily="Tahoma" FontWeight="Black" Margin="10" Name="BtnHome" Background="WhiteSmoke" />
+        <Button Content="Customers" Height="50" Width="100"  FontFamily="Tahoma" FontWeight="Black" Margin="10" Name="BtnCustomer" Background="WhiteSmoke" />
+        <Button Content="Employees" Height="50" Width="100"  FontFamily="Tahoma" FontWeight="Black" Margin="10" Name="BtnEmployee" Background="WhiteSmoke" />
+        <Button Content="Products" Height="50" Width="100"  FontFamily="Tahoma" FontWeight="Black" Margin="10" Name="BtnProducts" Background="WhiteSmoke" />
+      </StackPanel>
+    </Border>
+    <Border Grid.Row="1" Margin="5" Background="WhiteSmoke" Name="HomePanel" HorizontalAlignment="Stretch" BorderThickness="2" BorderBrush="Gray">
+        <StackPanel Orientation="Horizontal" Margin="5" >
+            <Image Source="Resources/1.png" Height="Auto" Width="Auto" />
+            <StackPanel Margin="5">
+                <TextBlock Padding="45" HorizontalAlignment="Center" FontFamily="Tahoma" FontWeight="Bold" FontSize="35" >Hello Welcome to the page</TextBlock>
+                <TextBlock HorizontalAlignment="Center" FontSize="30" FontFamily="Times New Roman" FontWeight="Regular">Please follow us in social media</TextBlock>
+                <StackPanel Orientation="Horizontal" Margin="30" HorizontalAlignment="Center">
+                    <Image Source="Resources/Twitter-72x72.png" Height="Auto" Width="Auto" Margin="20" />
+                    <Image Source="Resources/Facebook-72x72.png" Height="Auto" Width="Auto" Margin="20" />
+                    <Image Source="Resources/LinkedIn-72x72.png" Height="Auto" Width="Auto" Margin="20" />
+                    <Image Source="Resources/Blogger-72x72.png" Height="Auto" Width="Auto" Margin="20" />
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+    </Border>
   </Grid>
 </Window>
