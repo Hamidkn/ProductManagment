@@ -1,2 +1,2 @@
 # ProductManagment
-![alt text](https://github.com/Hamidkn/PhoneBook/blob/master/PhoneBook.App/Resources/Untitled.jpg?raw=true)
+![alt text](https://github.com/Hamidkn/ProductManagment/blob/master/Untitled.jpg?raw=true)
