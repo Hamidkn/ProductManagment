@@ -23,6 +23,7 @@ namespace WPFProductManagment
     public MainWindow()
     {
       InitializeComponent();
+      WindowStartupLocation = WindowStartupLocation.CenterScreen;
     }
   }
 }
