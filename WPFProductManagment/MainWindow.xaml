@@ -4,35 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFProductManagment"
-        mc:Ignorable="d"
-        Title="Product Management Application" Height="650" Width="1100" FontFamily="Tahoma" Icon="Resources/img_153497.png">
+        mc:Ignorable="d" Visibility="Hidden">
   <Grid>
-    <Grid.RowDefinitions>
-      <RowDefinition Height="Auto"/>
-      <RowDefinition Height="*"/>
-    </Grid.RowDefinitions>
-    <Border Background="WhiteSmoke" Margin="5" BorderThickness="2" BorderBrush="Gray">
-      <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="5 " Width="auto">
-          <Button Content="Home" Height="50" Width="100"  FontFamily="Tahoma" FontWeight="Black" Margin="10" Name="BtnHome" Background="WhiteSmoke" />
-        <Button Content="Customers" Height="50" Width="100"  FontFamily="Tahoma" FontWeight="Black" Margin="10" Name="BtnCustomer" Background="WhiteSmoke" />
-        <Button Content="Employees" Height="50" Width="100"  FontFamily="Tahoma" FontWeight="Black" Margin="10" Name="BtnEmployee" Background="WhiteSmoke" />
-        <Button Content="Products" Height="50" Width="100"  FontFamily="Tahoma" FontWeight="Black" Margin="10" Name="BtnProducts" Background="WhiteSmoke" />
-      </StackPanel>
-    </Border>
-    <Border Grid.Row="1" Margin="5" Background="WhiteSmoke" Name="HomePanel" HorizontalAlignment="Stretch" BorderThickness="2" BorderBrush="Gray">
-        <StackPanel Orientation="Horizontal" Margin="5" >
-            <Image Source="Resources/1.png" Height="Auto" Width="Auto" />
-            <StackPanel Margin="5">
-                <TextBlock Padding="45" HorizontalAlignment="Center" FontFamily="Tahoma" FontWeight="Bold" FontSize="35" >Hello Welcome to the page</TextBlock>
-                <TextBlock HorizontalAlignment="Center" FontSize="30" FontFamily="Times New Roman" FontWeight="Regular">Please follow us in social media</TextBlock>
-                <StackPanel Orientation="Horizontal" Margin="30" HorizontalAlignment="Center">
-                    <Image Source="Resources/Twitter-72x72.png" Height="Auto" Width="Auto" Margin="20" />
-                    <Image Source="Resources/Facebook-72x72.png" Height="Auto" Width="Auto" Margin="20" />
-                    <Image Source="Resources/LinkedIn-72x72.png" Height="Auto" Width="Auto" Margin="20" />
-                    <Image Source="Resources/Blogger-72x72.png" Height="Auto" Width="Auto" Margin="20" />
-                </StackPanel>
-            </StackPanel>
-        </StackPanel>
-    </Border>
+    
   </Grid>
 </Window>
