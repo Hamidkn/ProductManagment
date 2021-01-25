@@ -21,5 +21,37 @@ namespace WPFProductManagment.Pages
     {
       InitializeComponent();
     }
+
+    private void BtnHome_OnClick(object sender, RoutedEventArgs e)
+    {
+      HomePanel.Visibility = Visibility.Visible;
+      EmployessPanel.Visibility = Visibility.Collapsed;
+      ProductsPanel.Visibility = Visibility.Collapsed;
+      CustomersPanel.Visibility = Visibility.Collapsed;
+    }
+
+    private void BtnCustomer_OnClick(object sender, RoutedEventArgs e)
+    {
+      HomePanel.Visibility = Visibility.Collapsed;
+      EmployessPanel.Visibility = Visibility.Collapsed;
+      ProductsPanel.Visibility = Visibility.Collapsed;
+      CustomersPanel.Visibility = Visibility.Visible;
+    }
+
+    private void BtnEmployee_OnClick(object sender, RoutedEventArgs e)
+    {
+      HomePanel.Visibility = Visibility.Collapsed;
+      EmployessPanel.Visibility = Visibility.Visible;
+      ProductsPanel.Visibility = Visibility.Collapsed;
+      CustomersPanel.Visibility = Visibility.Collapsed;
+    }
+
+    private void BtnProducts_OnClick(object sender, RoutedEventArgs e)
+    {
+      HomePanel.Visibility = Visibility.Collapsed;
+      EmployessPanel.Visibility = Visibility.Collapsed;
+      ProductsPanel.Visibility = Visibility.Visible;
+      CustomersPanel.Visibility = Visibility.Collapsed;
+    }
   }
 }
