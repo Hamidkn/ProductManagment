@@ -55,7 +55,7 @@ namespace WPFProductManagment.View.Pages
       CustomersPanel.Visibility = Visibility.Collapsed;
     }
 
-    private void Twitter_OnClick(object sender, RoutedEventArgs e)
+    /*private void Twitter_OnClick(object sender, RoutedEventArgs e)
     {
       var url = new ProcessStartInfo("http://www.twitter.com")
       {
@@ -88,6 +88,17 @@ namespace WPFProductManagment.View.Pages
     private void Blogger_OnClick(object sender, RoutedEventArgs e)
     {
       var url = new ProcessStartInfo("http://www.blogger.com")
+      {
+        UseShellExecute = true,
+        Verb = "open"
+      };
+      Process.Start(url);
+    }*/
+
+    private void ImageButton_OnClick(object sender, RoutedEventArgs e)
+    {
+      var fileName = ((Hyperlink)sender).NavigateUri.ToString();
+      var url = new ProcessStartInfo(fileName)
       {
         UseShellExecute = true,
         Verb = "open"
