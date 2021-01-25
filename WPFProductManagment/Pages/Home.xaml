@@ -26,10 +26,18 @@
                     <TextBlock Padding="45" HorizontalAlignment="Center" FontFamily="Tahoma" FontWeight="Bold" FontSize="35" >Hello Welcome to the page</TextBlock>
                     <TextBlock HorizontalAlignment="Center" FontSize="30" FontFamily="Times New Roman" FontWeight="Regular">Please follow us in social media</TextBlock>
                     <StackPanel Orientation="Horizontal" Margin="30" HorizontalAlignment="Center">
-                        <Image Source="/Resources/Twitter-72x72.png" Height="Auto" Width="Auto" Margin="20" />
-                        <Image Source="/Resources/Facebook-72x72.png" Height="Auto" Width="Auto" Margin="20" />
-                        <Image Source="/Resources/LinkedIn-72x72.png" Height="Auto" Width="Auto" Margin="20" />
-                        <Image Source="/Resources/Blogger-72x72.png" Height="Auto" Width="Auto" Margin="20" />
+                      <TextBlock>
+                          <Hyperlink Name="TwitterImage" Click="Twitter_OnClick"><Image Source="/Resources/Twitter-72x72.png" Height="Auto" Width="Auto" Margin="20" /></Hyperlink>
+                      </TextBlock>
+                      <TextBlock>
+                          <Hyperlink Name="FacebookImage" Click="Facebook_OnClick"><Image Source="/Resources/Facebook-72x72.png" Height="Auto" Width="Auto" Margin="20" /></Hyperlink>
+                      </TextBlock>
+                      <TextBlock>
+                          <Hyperlink Name="LinkedinImage" Click="Linkedin_OnClick"><Image Source="/Resources/LinkedIn-72x72.png" Height="Auto" Width="Auto" Margin="20" /></Hyperlink>
+                      </TextBlock>
+                      <TextBlock>
+                          <Hyperlink Name="BloggerImage" Click="Blogger_OnClick"><Image Source="/Resources/Blogger-72x72.png" Height="Auto" Width="Auto" Margin="20" /></Hyperlink>
+                      </TextBlock>
                     </StackPanel>
                 </StackPanel>
             </StackPanel>
