@@ -1,9 +1,9 @@
-﻿<Window x:Class="WPFProductManagment.Pages.Home"
+﻿<Window x:Class="WPFProductManagment.View.Pages.Home"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:WPFProductManagment.Pages"
+        xmlns:local="clr-namespace:WPFProductManagment.View.Pages"
         mc:Ignorable="d"
         Title="Product Management Application" Height="650" Width="1100" FontFamily="Tahoma" Icon="../Resources/Jokes_16x16.png">
     <Grid>
@@ -13,13 +13,13 @@
         </Grid.RowDefinitions>
         <Border Background="WhiteSmoke" Margin="5" BorderThickness="2" BorderBrush="Gray">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="5 " Width="auto">
-                <Button Content="Home" Height="50" Width="100"  FontFamily="Tahoma" FontWeight="Black" Margin="10" Name="BtnHome" Background="WhiteSmoke" />
-                <Button Content="Customers" Height="50" Width="100"  FontFamily="Tahoma" FontWeight="Black" Margin="10" Name="BtnCustomer" Background="WhiteSmoke" />
-                <Button Content="Employees" Height="50" Width="100"  FontFamily="Tahoma" FontWeight="Black" Margin="10" Name="BtnEmployee" Background="WhiteSmoke" />
-                <Button Content="Products" Height="50" Width="100"  FontFamily="Tahoma" FontWeight="Black" Margin="10" Name="BtnProducts" Background="WhiteSmoke" />
+                <Button Content="Home" Height="50" Width="100"  FontFamily="Tahoma" FontWeight="Black" Margin="10" Name="BtnHome" Background="WhiteSmoke" Click="BtnHome_OnClick" />
+                <Button Content="Customers" Height="50" Width="100"  FontFamily="Tahoma" FontWeight="Black" Margin="10" Name="BtnCustomer" Background="WhiteSmoke" Click="BtnCustomer_OnClick"/>
+                <Button Content="Employees" Height="50" Width="100"  FontFamily="Tahoma" FontWeight="Black" Margin="10" Name="BtnEmployee" Background="WhiteSmoke" Click="BtnEmployee_OnClick"/>
+                <Button Content="Products" Height="50" Width="100"  FontFamily="Tahoma" FontWeight="Black" Margin="10" Name="BtnProducts" Background="WhiteSmoke" Click="BtnProducts_OnClick"/>
             </StackPanel>
         </Border>
-        <Border Grid.Row="1" Margin="5" Background="WhiteSmoke" Name="HomePanel" HorizontalAlignment="Stretch" BorderThickness="2" BorderBrush="Gray">
+        <Border Grid.Row="1" Margin="5" Background="WhiteSmoke" Name="HomePanel" Visibility="Visible" HorizontalAlignment="Stretch" BorderThickness="2" BorderBrush="Gray">
             <StackPanel Orientation="Horizontal" Margin="5" >
                 <Image Source="/Resources/1.png" Height="Auto" Width="Auto" />
                 <StackPanel Margin="5">
@@ -34,5 +34,14 @@
                 </StackPanel>
             </StackPanel>
         </Border>
-    </Grid>
+      <Border Grid.Row="1" Margin="5" Background="WhiteSmoke" Name="EmployessPanel" Visibility="Collapsed" HorizontalAlignment="Stretch" BorderThickness="2" BorderBrush="Gray">
+          <Label FontWeight="Bold">Hello Employees</Label>
+      </Border>
+      <Border Grid.Row="1" Margin="5" Background="WhiteSmoke" Name="CustomersPanel" Visibility="Collapsed" HorizontalAlignment="Stretch" BorderThickness="2" BorderBrush="Gray">
+        <Label FontWeight="Bold">Hello Customers</Label>
+      </Border>
+      <Border Grid.Row="1" Margin="5" Background="WhiteSmoke" Name="ProductsPanel" Visibility="Collapsed" HorizontalAlignment="Stretch" BorderThickness="2" BorderBrush="Gray">
+        <Label FontWeight="Bold">Hello Products</Label>
+      </Border>
+  </Grid>
 </Window>

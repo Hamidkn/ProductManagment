@@ -12,9 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using WPFProductManagment.Pages;
+using WPFProductManagment.View.Pages;
 
-namespace WPFProductManagment
+namespace WPFProductManagment.View
 {
   /// <summary>
   /// Interaction logic for MainWindow.xaml
@@ -22,6 +22,7 @@ namespace WPFProductManagment
   public partial class MainWindow : Window
   {
     private Home _home = new Home();
+
     public MainWindow()
     {
       InitializeComponent();
