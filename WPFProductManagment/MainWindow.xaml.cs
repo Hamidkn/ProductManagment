@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WPFProductManagment.View.Pages;
+using Index = WPFProductManagment.View.Pages.Index;
 
 namespace WPFProductManagment.View
 {
@@ -21,7 +22,7 @@ namespace WPFProductManagment.View
   /// </summary>
   public partial class MainWindow : Window
   {
-    private Home _home = new Home();
+    private Index _home = new Index();
 
     public MainWindow()
     {

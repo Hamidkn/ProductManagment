@@ -16,17 +16,26 @@ namespace WPFProductManagment.View.Pages
   /// <summary>
   /// Interaction logic for Home.xaml
   /// </summary>
-  public partial class Home : Window
+  public partial class Index : Window
   {
-    public Home()
+    private Border border;
+
+    public Index()
     {
       InitializeComponent();
     }
 
-    private void BtnHome_OnClick(object sender, RoutedEventArgs e)
+    private void Btn_OnClick(object sender, RoutedEventArgs e)
+    {
+      border.Name = (string) ((Button)sender).Content;
+      var result = border.Name;
+      border.Visibility = Visibility.Visible;
+    }
+
+    /*private void BtnHome_OnClick(object sender, RoutedEventArgs e)
     {
       HomePanel.Visibility = Visibility.Visible;
-      EmployessPanel.Visibility = Visibility.Collapsed;
+      EmployeesPanel.Visibility = Visibility.Collapsed;
       ProductsPanel.Visibility = Visibility.Collapsed;
       CustomersPanel.Visibility = Visibility.Collapsed;
     }
@@ -34,7 +43,7 @@ namespace WPFProductManagment.View.Pages
     private void BtnCustomer_OnClick(object sender, RoutedEventArgs e)
     {
       HomePanel.Visibility = Visibility.Collapsed;
-      EmployessPanel.Visibility = Visibility.Collapsed;
+      EmployeesPanel.Visibility = Visibility.Collapsed;
       ProductsPanel.Visibility = Visibility.Collapsed;
       CustomersPanel.Visibility = Visibility.Visible;
     }
@@ -42,7 +51,7 @@ namespace WPFProductManagment.View.Pages
     private void BtnEmployee_OnClick(object sender, RoutedEventArgs e)
     {
       HomePanel.Visibility = Visibility.Collapsed;
-      EmployessPanel.Visibility = Visibility.Visible;
+      EmployeesPanel.Visibility = Visibility.Visible;
       ProductsPanel.Visibility = Visibility.Collapsed;
       CustomersPanel.Visibility = Visibility.Collapsed;
     }
@@ -50,10 +59,10 @@ namespace WPFProductManagment.View.Pages
     private void BtnProducts_OnClick(object sender, RoutedEventArgs e)
     {
       HomePanel.Visibility = Visibility.Collapsed;
-      EmployessPanel.Visibility = Visibility.Collapsed;
+      EmployeesPanel.Visibility = Visibility.Collapsed;
       ProductsPanel.Visibility = Visibility.Visible;
       CustomersPanel.Visibility = Visibility.Collapsed;
-    }
+    }*/
 
     /*private void Twitter_OnClick(object sender, RoutedEventArgs e)
     {
