@@ -3,14 +3,14 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30611.23
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WPFProductManagment", "WPFProductManagment\WPFProductManagment.csproj", "{9DC0FF8A-CFE9-4B65-AD25-EB45A5DFDC3B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WPFProductManagment.View", "WPFProductManagment\WPFProductManagment.View.csproj", "{9DC0FF8A-CFE9-4B65-AD25-EB45A5DFDC3B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{DBE5F679-61A8-458C-B31C-6D7EF556DE3B}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Productmanagement.DataLayer", "Productmanagement.DataLayer\Productmanagement.DataLayer.csproj", "{E0D15314-700C-4B1E-87C0-D2F7845FF682}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Productmanagement.Model", "Productmanagement.DataLayer\Productmanagement.Model.csproj", "{E0D15314-700C-4B1E-87C0-D2F7845FF682}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

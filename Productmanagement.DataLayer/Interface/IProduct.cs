@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Productmanagement.DataLayer.Interface
+namespace Productmanagement.Model.Interface
 {
   public interface IProduct
   {

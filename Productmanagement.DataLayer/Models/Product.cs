@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Productmanagement.DataLayer.Interface;
+using Productmanagement.Model.Interface;
 
-namespace Productmanagement.DataLayer.Models
+namespace Productmanagement.Model.Models
 {
   public class Product : IProduct
   {

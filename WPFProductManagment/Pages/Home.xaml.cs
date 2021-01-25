@@ -10,7 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace WPFProductManagment.Pages
+namespace WPFProductManagment.View.Pages
 {
   /// <summary>
   /// Interaction logic for Home.xaml
