@@ -10,6 +10,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Productmanagement.Model.BaseClasses;
 
 namespace WPFProductManagment.View.Pages
 {
@@ -18,7 +19,7 @@ namespace WPFProductManagment.View.Pages
   /// </summary>
   public partial class Index : Window
   {
-    private Border border;
+    private Border border = new Border();
 
     public Index()
     {
@@ -27,82 +28,38 @@ namespace WPFProductManagment.View.Pages
 
     private void Btn_OnClick(object sender, RoutedEventArgs e)
     {
-      border.Name = (string) ((Button)sender).Content;
-      var result = border.Name;
-      border.Visibility = Visibility.Visible;
-    }
-
-    /*private void BtnHome_OnClick(object sender, RoutedEventArgs e)
-    {
-      HomePanel.Visibility = Visibility.Visible;
-      EmployeesPanel.Visibility = Visibility.Collapsed;
-      ProductsPanel.Visibility = Visibility.Collapsed;
-      CustomersPanel.Visibility = Visibility.Collapsed;
-    }
-
-    private void BtnCustomer_OnClick(object sender, RoutedEventArgs e)
-    {
-      HomePanel.Visibility = Visibility.Collapsed;
-      EmployeesPanel.Visibility = Visibility.Collapsed;
-      ProductsPanel.Visibility = Visibility.Collapsed;
-      CustomersPanel.Visibility = Visibility.Visible;
-    }
-
-    private void BtnEmployee_OnClick(object sender, RoutedEventArgs e)
-    {
-      HomePanel.Visibility = Visibility.Collapsed;
-      EmployeesPanel.Visibility = Visibility.Visible;
-      ProductsPanel.Visibility = Visibility.Collapsed;
-      CustomersPanel.Visibility = Visibility.Collapsed;
-    }
-
-    private void BtnProducts_OnClick(object sender, RoutedEventArgs e)
-    {
-      HomePanel.Visibility = Visibility.Collapsed;
-      EmployeesPanel.Visibility = Visibility.Collapsed;
-      ProductsPanel.Visibility = Visibility.Visible;
-      CustomersPanel.Visibility = Visibility.Collapsed;
-    }*/
-
-    /*private void Twitter_OnClick(object sender, RoutedEventArgs e)
-    {
-      var url = new ProcessStartInfo("http://www.twitter.com")
+      if ((string)((Button)sender).Content == "Home")
       {
-        UseShellExecute = true,
-        Verb = "open"
-      };
-      System.Diagnostics.Process.Start(url);
-    }
-
-    private void Facebook_OnClick(object sender, RoutedEventArgs e)
-    {
-      var url = new ProcessStartInfo("http://www.facebook.com")
+        HomePanel.Visibility = Visibility.Visible;
+        EmployeesPanel.Visibility = Visibility.Collapsed;
+        ProductsPanel.Visibility = Visibility.Collapsed;
+        CustomersPanel.Visibility = Visibility.Collapsed;
+      }
+      else if ((string)((Button)sender).Content == "Employees")
       {
-        UseShellExecute = true,
-        Verb = "open"
-      };
-      Process.Start(url);
-    }
-
-    private void Linkedin_OnClick(object sender, RoutedEventArgs e)
-    {
-      var url = new ProcessStartInfo("http://www.linkedin.com")
+        HomePanel.Visibility = Visibility.Collapsed;
+        EmployeesPanel.Visibility = Visibility.Visible;
+        ProductsPanel.Visibility = Visibility.Collapsed;
+        CustomersPanel.Visibility = Visibility.Collapsed;
+        List<EmployeeCollection> emCollection = new List<EmployeeCollection>();
+        //DataContext = emCollection.Employeescollection;
+        dataGrid.ItemsSource = emCollection;
+      }
+      else if ((string)((Button)sender).Content == "Customers")
       {
-        UseShellExecute = true,
-        Verb = "open"
-      };
-      Process.Start(url);
-    }
-
-    private void Blogger_OnClick(object sender, RoutedEventArgs e)
-    {
-      var url = new ProcessStartInfo("http://www.blogger.com")
+        HomePanel.Visibility = Visibility.Collapsed;
+        EmployeesPanel.Visibility = Visibility.Collapsed;
+        ProductsPanel.Visibility = Visibility.Collapsed;
+        CustomersPanel.Visibility = Visibility.Visible;
+      }
+      else if ((string)((Button)sender).Content == "Products")
       {
-        UseShellExecute = true,
-        Verb = "open"
-      };
-      Process.Start(url);
-    }*/
+        HomePanel.Visibility = Visibility.Collapsed;
+        EmployeesPanel.Visibility = Visibility.Collapsed;
+        ProductsPanel.Visibility = Visibility.Visible;
+        CustomersPanel.Visibility = Visibility.Collapsed;
+      }
+    }
 
     private void ImageButton_OnClick(object sender, RoutedEventArgs e)
     {
