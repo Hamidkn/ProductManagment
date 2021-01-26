@@ -19,6 +19,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Productmanagement.DataLayer\Productmanagement.Model.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Resource Include="Resources\1.png" />
     <Resource Include="Resources\Blogger-72x72.png" />
     <Resource Include="Resources\Facebook-72x72.png" />

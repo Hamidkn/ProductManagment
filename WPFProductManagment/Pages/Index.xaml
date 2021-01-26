@@ -1,0 +1,129 @@
+﻿<Window x:Class="WPFProductManagment.View.Pages.Index"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFProductManagment.View.Pages"
+        mc:Ignorable="d"
+        Title="Product Management Application" Height="650" Width="1100" FontFamily="Tahoma" Icon="../Resources/Jokes_16x16.png">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Border Background="WhiteSmoke" Margin="5" BorderThickness="2" BorderBrush="Gray">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="5 " Width="auto">
+                <Button Content="Home" Height="50" Width="100"  FontFamily="Tahoma" FontWeight="Black" Margin="10" Name="BtnHome" Background="WhiteSmoke" Click="Btn_OnClick" />
+                <Button Content="Customers" Height="50" Width="100"  FontFamily="Tahoma" FontWeight="Black" Margin="10" Name="BtnCustomer" Background="WhiteSmoke" Click="Btn_OnClick"/>
+                <Button Content="Employees" Height="50" Width="100"  FontFamily="Tahoma" FontWeight="Black" Margin="10" Name="BtnEmployee" Background="WhiteSmoke" Click="Btn_OnClick"/>
+                <Button Content="Products" Height="50" Width="100"  FontFamily="Tahoma" FontWeight="Black" Margin="10" Name="BtnProducts" Background="WhiteSmoke" Click="Btn_OnClick"/>
+            </StackPanel>
+        </Border>
+        <Border Grid.Row="1" Margin="5" Background="WhiteSmoke" Name="HomePanel" Visibility="Visible" HorizontalAlignment="Stretch" BorderThickness="2" BorderBrush="Gray">
+            <StackPanel Orientation="Horizontal" Margin="5" >
+                <Image Source="/Resources/1.png" Height="Auto" Width="Auto" />
+                <StackPanel Margin="5">
+                    <TextBlock Padding="45" HorizontalAlignment="Center" FontFamily="Tahoma" FontWeight="Bold" FontSize="35" >Hello Welcome to the page</TextBlock>
+                    <TextBlock HorizontalAlignment="Center" FontSize="30" FontFamily="Times New Roman" FontWeight="Regular">Please follow us in social media</TextBlock>
+                    <StackPanel Orientation="Horizontal" Margin="30" HorizontalAlignment="Center">
+                      <TextBlock>
+                          <Hyperlink Name="TwitterImage" NavigateUri="http://www.twitter.com" Click="ImageButton_OnClick"><Image Source="/Resources/Twitter-72x72.png" Height="Auto" Width="Auto" Margin="20" /></Hyperlink>
+                      </TextBlock>
+                      <TextBlock>
+                          <Hyperlink Name="FacebookImage" NavigateUri="http://www.facebook.com" Click="ImageButton_OnClick"><Image Source="/Resources/Facebook-72x72.png" Height="Auto" Width="Auto" Margin="20" /></Hyperlink>
+                      </TextBlock>
+                      <TextBlock>
+                          <Hyperlink Name="LinkedinImage" NavigateUri="http://www.linkedin.com" Click="ImageButton_OnClick"><Image Source="/Resources/LinkedIn-72x72.png" Height="Auto" Width="Auto" Margin="20" /></Hyperlink>
+                      </TextBlock>
+                      <TextBlock>
+                          <Hyperlink Name="BloggerImage" NavigateUri="http://www.blogger.com" Click="ImageButton_OnClick"><Image Source="/Resources/Blogger-72x72.png" Height="Auto" Width="Auto" Margin="20" /></Hyperlink>
+                      </TextBlock>
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+      <Border Grid.Row="1" Margin="5" Background="Aqua" Name="EmployeesPanel" Visibility="Collapsed" HorizontalAlignment="Stretch" BorderThickness="2" BorderBrush="Gray">
+        <StackPanel Margin="5" >
+          <Label FontFamily="Tahoma" FontSize="35" FontWeight="Bold" HorizontalAlignment="Center" Margin="10">Employees</Label>
+          <DataGrid Name="dataGrid">
+            <DataGrid.Columns>
+              <DataGridTextColumn Header="ID" Width="50" Binding="{Binding Path=Id}" />
+              <DataGridTextColumn Header="First Name" Width="150" Binding="{Binding Path=FirstName}" />
+              <DataGridTextColumn Header="Last Name" Width="150" Binding="{Binding Path=LastName}" />
+              <DataGridTextColumn Header="Phone Number" Width="150" Binding="{Binding Path=PhoneNumber}" />
+              <DataGridTextColumn Header="Address" Width="400" Binding="{Binding Path=Address}" />
+              <DataGridTextColumn Header="Department" Width="150" Binding="{Binding Path=Department}" />
+          </DataGrid.Columns>
+          </DataGrid>
+        <!--<ListView ItemsSource="{Binding Employeescollection}">
+            <ListView.View>
+            <GridView AllowsColumnReorder="True" ColumnHeaderToolTip="Employees">
+              <GridViewColumn Header="ID" Width="50" DisplayMemberBinding="{Binding Path=Id}" />
+              <GridViewColumn Header="First Name" Width="150" DisplayMemberBinding="{Binding Path=FirstName}" />
+              <GridViewColumn Header="Last Name" Width="150" DisplayMemberBinding="{Binding Path=LastName}" />
+              <GridViewColumn Header="Phone Number" Width="150" DisplayMemberBinding="{Binding Path=PhoneNumber}" />
+              <GridViewColumn Header="Address" Width="400" DisplayMemberBinding="{Binding Path=Address}" />
+              <GridViewColumn Header="Department" Width="150" DisplayMemberBinding="{Binding Path=Department}" />
+            </GridView>
+            </ListView.View>
+          </ListView>-->
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+          <Button Content="Add Employee" Height="50" Width="100" FontFamily="Tahoma" FontWeight="Black" Margin="10" Name="BtnAddEmployee" Background="WhiteSmoke" />
+          <Button Content="Edit" Height="50" Width="100" FontFamily="Tahoma" FontWeight="Black" Margin="10" Name="BtnEditEmployee" Background="WhiteSmoke" />
+          <Button Content="Delete" Height="50" Width="100" FontFamily="Tahoma" FontWeight="Black" Margin="10" Name="BtnDeleteEmployee" Background="WhiteSmoke" />
+        </StackPanel>
+      </StackPanel>
+    </Border>
+      <Border Grid.Row="1" Margin="5" Background="Aqua" Name="CustomersPanel" Visibility="Collapsed" HorizontalAlignment="Stretch" BorderThickness="2" BorderBrush="Gray">
+         <StackPanel Margin="5" >
+          <Label FontFamily="Tahoma" FontSize="35" FontWeight="Bold" HorizontalAlignment="Center" Margin="10">Customers</Label>
+           <DataGrid>
+             <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Width="50" Binding="{Binding Path=Id}" />
+                <DataGridTextColumn Header="First Name" Width="150" Binding="{Binding Path=FirstName}" />
+                <DataGridTextColumn Header="Last Name" Width="150" Binding="{Binding Path=LastName}" />
+                <DataGridTextColumn Header="Phone Number" Width="150" Binding="{Binding Path=PhoneNumber}" />
+                <DataGridTextColumn Header="Address" Width="550" Binding="{Binding Path=Address}" />
+              </DataGrid.Columns>
+           </DataGrid>
+          <!--<ListView>
+            <ListView.View>
+              <GridView AllowsColumnReorder="True" ColumnHeaderToolTip="Employees">
+                <GridViewColumn Header="ID" Width="50" DisplayMemberBinding="{Binding Path=Id}" />
+                <GridViewColumn Header="First Name" Width="150" DisplayMemberBinding="{Binding Path=FirstName}" />
+                <GridViewColumn Header="Last Name" Width="150" DisplayMemberBinding="{Binding Path=LastName}" />
+                <GridViewColumn Header="Phone Number" Width="150" DisplayMemberBinding="{Binding Path=PhoneNumber}" />
+                <GridViewColumn Header="Address" Width="550" DisplayMemberBinding="{Binding Path=Address}" />
+              </GridView>
+            </ListView.View>
+          </ListView>-->
+           <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+              <Button Content="Add Customer" Height="50" Width="100" FontFamily="Tahoma" FontWeight="Black" Margin="10" Name="BtnAddCustomer" Background="WhiteSmoke" />
+              <Button Content="Edit" Height="50" Width="100" FontFamily="Tahoma" FontWeight="Black" Margin="10" Name="BtnEditCustomer" Background="WhiteSmoke" />
+              <Button Content="Delete" Height="50" Width="100" FontFamily="Tahoma" FontWeight="Black" Margin="10" Name="BtnDeleteCustomer" Background="WhiteSmoke" />
+           </StackPanel>
+      </StackPanel>
+      </Border>
+      <Border Grid.Row="1" Margin="5" Background="Aqua" Name="ProductsPanel" Visibility="Collapsed" HorizontalAlignment="Stretch" BorderThickness="2" BorderBrush="Gray">
+      <StackPanel Margin="5" >
+        <Label FontFamily="Tahoma" FontSize="35" FontWeight="Bold" HorizontalAlignment="Center" Margin="10">Products</Label>
+        <ListView>
+          <ListView.View>
+            <GridView AllowsColumnReorder="True" ColumnHeaderToolTip="Employees">
+              <GridViewColumn Header="ID" Width="50" DisplayMemberBinding="{Binding Path=Id}" />
+              <GridViewColumn Header="Name" Width="400" DisplayMemberBinding="{Binding Path=Name}" />
+              <GridViewColumn Header="Author" Width="300" DisplayMemberBinding="{Binding Path=Author}" />
+              <GridViewColumn Header="Price" Width="150" DisplayMemberBinding="{Binding Path=Price}" />
+              <GridViewColumn Header="Available count" Width="150" DisplayMemberBinding="{Binding Path=Availablecount}" />
+            </GridView>
+          </ListView.View>
+        </ListView>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+          <Button Content="Add Product" Height="50" Width="100" FontFamily="Tahoma" FontWeight="Black" Margin="10" Name="BtnAddProduct" Background="WhiteSmoke" />
+          <Button Content="Edit" Height="50" Width="100" FontFamily="Tahoma" FontWeight="Black" Margin="10" Name="BtnEditProduct" Background="WhiteSmoke" />
+          <Button Content="Delete" Height="50" Width="100" FontFamily="Tahoma" FontWeight="Black" Margin="10" Name="BtnDeleteProduct" Background="WhiteSmoke" />
+        </StackPanel>
+      </StackPanel>
+    </Border>
+  </Grid>
+</Window>
