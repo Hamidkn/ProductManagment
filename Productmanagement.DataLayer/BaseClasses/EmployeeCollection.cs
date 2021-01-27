@@ -23,12 +23,12 @@ namespace Productmanagement.Model.BaseClasses
       _employeesCollection.Add(
         new Employee()
         {
-          Id = 0,
-          FirstName = "Hamid",
-          LastName = "Keshmiri",
-          PhoneNumber = 773569389,
+          Id = 1,
+          FirstName = "Franta",
+          LastName = "Mach",
+          PhoneNumber = 773569564,
           Address = "Plzen",
-          Department = Department.Production
+          Department = Department.Advertisement
         });
     }
 

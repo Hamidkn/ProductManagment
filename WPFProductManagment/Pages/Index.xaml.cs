@@ -11,6 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Productmanagement.Model.BaseClasses;
+using Productmanagement.Model.Models;
 
 namespace WPFProductManagment.View.Pages
 {
@@ -20,6 +21,9 @@ namespace WPFProductManagment.View.Pages
   public partial class Index : Window
   {
     private Border border = new Border();
+    private EmployeeCollection emCollection = new EmployeeCollection();
+    private CustomerCollection cmCollection = new CustomerCollection();
+    private ProductCollection prCollection = new ProductCollection();
 
     public Index()
     {
@@ -39,11 +43,9 @@ namespace WPFProductManagment.View.Pages
       {
         HomePanel.Visibility = Visibility.Collapsed;
         EmployeesPanel.Visibility = Visibility.Visible;
+        listViewEmployee.ItemsSource = emCollection.Employeescollection;
         ProductsPanel.Visibility = Visibility.Collapsed;
         CustomersPanel.Visibility = Visibility.Collapsed;
-        List<EmployeeCollection> emCollection = new List<EmployeeCollection>();
-        //DataContext = emCollection.Employeescollection;
-        dataGrid.ItemsSource = emCollection;
       }
       else if ((string)((Button)sender).Content == "Customers")
       {
@@ -51,12 +53,14 @@ namespace WPFProductManagment.View.Pages
         EmployeesPanel.Visibility = Visibility.Collapsed;
         ProductsPanel.Visibility = Visibility.Collapsed;
         CustomersPanel.Visibility = Visibility.Visible;
+        listViewCustomer.ItemsSource = cmCollection.Customercollection;
       }
       else if ((string)((Button)sender).Content == "Products")
       {
         HomePanel.Visibility = Visibility.Collapsed;
         EmployeesPanel.Visibility = Visibility.Collapsed;
         ProductsPanel.Visibility = Visibility.Visible;
+        listViewProduct.ItemsSource = prCollection.Productcollection;
         CustomersPanel.Visibility = Visibility.Collapsed;
       }
     }
@@ -70,6 +74,60 @@ namespace WPFProductManagment.View.Pages
         Verb = "open"
       };
       Process.Start(url);
+    }
+
+    private void MenuItem_OnClick(object sender, RoutedEventArgs e)
+    {
+      contextMenu.IsOpen = true;
+      e.Handled = true;
+
+      // ContextMenu cm = (ContextMenu)contextMenu;
+      // cm.PlacementTarget = ((Button)sender);
+      // cm.IsOpen = true;
+    }
+
+    private void BtnDelete_OnClick(object sender, RoutedEventArgs e)
+    {
+      if (((Button)sender).Name == "BtnDeleteEmployee")
+      {
+        if (listViewEmployee.SelectedItem == null)
+        {
+          return;
+        }
+        else if (MessageBox.Show("Are you sure for delete?", "Delete employee", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+        {
+          emCollection.Employeescollection.Remove((Employee)listViewEmployee.SelectedItem);
+        }
+      }
+      else if (((Button)sender).Name == "BtnDeleteCustomer")
+      {
+        if (listViewCustomer.SelectedItem == null)
+        {
+          return;
+        }
+        else if (MessageBox.Show("Are you sure for delete?", "Delete customer", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+        {
+          cmCollection.Customercollection.Remove((Customer)listViewCustomer.SelectedItem);
+        }
+      }
+      else if (((Button)sender).Name == "BtnDeleteProduct")
+      {
+        if (listViewProduct.SelectedItem == null)
+        {
+          return;
+        }
+        else if (MessageBox.Show("Are you sure for delete?", "Delete product", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+        {
+          prCollection.Productcollection.Remove((Product)listViewProduct.SelectedItem);
+        }
+      }
+    }
+
+    private void BtnEditEmployee_OnClick(object sender, RoutedEventArgs e)
+    {
+      EditEmployeeWindow edit = new EditEmployeeWindow();
+      edit.Show();
+      var itemList = listViewEmployee.SelectedItem;
     }
   }
 }

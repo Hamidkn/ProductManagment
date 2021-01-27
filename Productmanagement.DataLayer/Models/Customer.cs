@@ -12,6 +12,14 @@ namespace Productmanagement.Model.Models
     public ulong PhoneNumber { get; set; }
     public string Address { get; set; }
 
+    public string FullName
+    {
+      get
+      {
+        return FirstName + " " + LastName;
+      }
+    }
+
     public string GetBasicInfo()
     {
       return $"Name: {FirstName} {LastName}, Phone: {PhoneNumber}, Address: {Address}";
