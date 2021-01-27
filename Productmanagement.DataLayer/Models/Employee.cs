@@ -20,6 +20,14 @@ namespace Productmanagement.Model.Models
     public string Address { get; set; }
     public decimal BaseSalary { get; set; }
     public Department Department { get; set; }
+
+    public string FullName
+    {
+      get
+      {
+        return FirstName + " " + LastName;
+      }
+    }
     public string GetBasicInfo()
     {
       return $"Name: {FirstName} {LastName}, Phone: {PhoneNumber},\nAddress: {Address}, Department: {Department}, Base Salary: {BaseSalary}";
