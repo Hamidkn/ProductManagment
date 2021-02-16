@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Text;
 using Productmanagement.Model.Models;
 
@@ -8,7 +9,23 @@ namespace Productmanagement.Model.BaseClasses
 {
   public class EmployeeCollection
   {
+    private ObservableCollection<Employee> _employeesCollection =
+      new ObservableCollection<Employee>();
+
+    public ObservableCollection<Employee> Employeescollection
+    {
+      get
+      {
+        return _employeesCollection;
+      }
+    }
+
     public EmployeeCollection()
+    {
+      ReadEmployees();
+    }
+
+    private void ReadEmployees()
     {
       _employeesCollection.Add(
         new Employee()
@@ -32,15 +49,26 @@ namespace Productmanagement.Model.BaseClasses
         });
     }
 
-    private ObservableCollection<Employee> _employeesCollection =
-      new ObservableCollection<Employee>();
-
-    public ObservableCollection<Employee> Employeescollection
+    public void AddProduct(Employee employee)
     {
-      get
+      if (employee != null)
       {
-        return _employeesCollection;
+        _employeesCollection.Add(employee);
       }
+    }
+
+    public bool DeleteProduct(string employeeName)
+    {
+      var employee = _employeesCollection.First(e => e.FullName == employeeName);
+      _employeesCollection.Remove(employee);
+      return true;
+    }
+
+    public void UpdateProduct(Employee employee)
+    {
+      var newemployee = _employeesCollection.First(p => p.Id == employee.Id);
+      var index = _employeesCollection.IndexOf(newemployee);
+      _employeesCollection[index] = employee;
     }
   }
 }

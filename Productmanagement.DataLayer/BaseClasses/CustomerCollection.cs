@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Text;
 using Productmanagement.Model.Models;
 
@@ -8,7 +9,23 @@ namespace Productmanagement.Model.BaseClasses
 {
   public class CustomerCollection
   {
+    private ObservableCollection<Customer> _customerCollection =
+      new ObservableCollection<Customer>();
+
+    public ObservableCollection<Customer> Customercollection
+    {
+      get
+      {
+        return _customerCollection;
+      }
+    }
+
     public CustomerCollection()
+    {
+      ReadCustomers();
+    }
+
+    private void ReadCustomers()
     {
       _customerCollection.Add(
         new Customer()
@@ -39,15 +56,23 @@ namespace Productmanagement.Model.BaseClasses
         });
     }
 
-    private ObservableCollection<Customer> _customerCollection =
-      new ObservableCollection<Customer>();
-
-    public ObservableCollection<Customer> Customercollection
+    public void AddCustomer(Customer customer)
     {
-      get
-      {
-        return _customerCollection;
-      }
+      _customerCollection.Add(customer);
+    }
+
+    public bool DeleteCustomer(string customerName)
+    {
+      var customer = _customerCollection.First(c => c.FullName == customerName);
+      _customerCollection.Remove(customer);
+      return true;
+    }
+
+    public void UpdateCustomer(Customer customer)
+    {
+      var newCustomer = _customerCollection.First(c => c.Id == customer.Id);
+      int index = _customerCollection.IndexOf(newCustomer);
+      _customerCollection[index] = customer;
     }
   }
 }
