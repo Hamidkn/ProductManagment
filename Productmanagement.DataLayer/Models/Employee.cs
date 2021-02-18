@@ -27,6 +27,10 @@ namespace Productmanagement.Model.Models
       {
         return FirstName + " " + LastName;
       }
+      set
+      {
+        FullName = FirstName + " " + LastName;
+      }
     }
     public string GetBasicInfo()
     {

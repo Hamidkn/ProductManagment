@@ -43,9 +43,9 @@
             </StackPanel>
         </Border>
       <Border Grid.Row="1" Margin="5" Background="Aqua" Name="EmployeesPanel" Visibility="Collapsed" HorizontalAlignment="Stretch" BorderThickness="2" BorderBrush="Gray">
-        <StackPanel Margin="5" >
+        <StackPanel Margin="5" HorizontalAlignment="Stretch">
           <Label FontFamily="Tahoma" FontSize="35" FontWeight="Bold" HorizontalAlignment="Center" Margin="10">Employees</Label>
-          <ListView ItemsSource="{Binding Source= StaticResource Employeescollection}" Name="listViewEmployee">
+          <ListView ItemsSource="{Binding Source= StaticResource Employeescollection}" Name="listViewEmployee" SelectionChanged="ListViewEmployee_OnSelectionChanged">
             <ListView.View>
               <GridView AllowsColumnReorder="True" ColumnHeaderToolTip="Employee Information">
                 <GridView.ColumnHeaderContextMenu>
@@ -61,17 +61,22 @@
             </GridView>
             </ListView.View>
           </ListView>
-          <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-          <Button Content="Add Employee" Height="50" Width="100" FontFamily="Tahoma" FontWeight="Black" Margin="10" Name="BtnAddEmployee" Background="WhiteSmoke" />
-          <Button Content="Edit" Height="50" Width="100" FontFamily="Tahoma" FontWeight="Black" Margin="10" Name="BtnEditEmployee" Background="WhiteSmoke" Click="BtnEditEmployee_OnClick"/>
-          <Button Content="Delete" Height="50" Width="100" FontFamily="Tahoma" FontWeight="Black" Margin="10" Name="BtnDeleteEmployee" Background="WhiteSmoke" Click="BtnDelete_OnClick" />
-        </StackPanel>
+            <WrapPanel Margin="10" HorizontalAlignment="Left">
+                <Label Margin="2" FontWeight="Bold">Detail Info:</Label>
+                <Label Margin="2" Content="Click on each Row!" Name="EmployeeDetail"></Label>
+            </WrapPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+              
+              <Button Content="Add Employee" Height="50" Width="100" FontFamily="Tahoma" FontWeight="Black" Margin="10" Name="BtnAddEmployee" Background="WhiteSmoke" Click="BtnAddEmployee_OnClick"/>
+              <Button Content="Edit" Height="50" Width="100" FontFamily="Tahoma" FontWeight="Black" Margin="10" Name="BtnEditEmployee" Background="WhiteSmoke" Click="BtnEditEmployee_OnClick"/>
+              <Button  Content="Delete" Height="50" Width="100" FontFamily="Tahoma" FontWeight="Black" Margin="10" Name="BtnDeleteEmployee" Background="WhiteSmoke" Click="BtnDelete_OnClick" />
+          </StackPanel>
       </StackPanel>
     </Border>
       <Border Grid.Row="1" Margin="5" Background="Aqua" Name="CustomersPanel" Visibility="Collapsed" HorizontalAlignment="Stretch" BorderThickness="2" BorderBrush="Gray">
          <StackPanel Margin="5" >
           <Label FontFamily="Tahoma" FontSize="35" FontWeight="Bold" HorizontalAlignment="Center" Margin="10">Customers</Label>
-        <ListView ItemsSource="{Binding Source= StaticResource Customercollection}" Name="listViewCustomer">
+        <ListView ItemsSource="{Binding Source= StaticResource Customercollection}" Name="listViewCustomer" SelectionChanged="ListViewCustomer_OnSelectionChanged">
           <ListView.View>
             <GridView AllowsColumnReorder="True" ColumnHeaderToolTip="Customer Information">
               <GridView.ColumnHeaderContextMenu>
@@ -86,9 +91,13 @@
             </GridView>
           </ListView.View>
         </ListView>
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-              <Button Content="Add Customer" Height="50" Width="100" FontFamily="Tahoma" FontWeight="Black" Margin="10" Name="BtnAddCustomer" Background="WhiteSmoke" />
-              <Button Content="Edit" Height="50" Width="100" FontFamily="Tahoma" FontWeight="Black" Margin="10" Name="BtnEditCustomer" Background="WhiteSmoke" />
+             <WrapPanel Margin="10" HorizontalAlignment="Left">
+                 <Label Margin="2" FontWeight="Bold">Detail Info:</Label>
+                 <Label Margin="2" Content="Click on each Row!" Name="CustomerDetail"></Label>
+             </WrapPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+              <Button Content="Add Customer" Height="50" Width="100" FontFamily="Tahoma" FontWeight="Black" Margin="10" Name="BtnAddCustomer" Background="WhiteSmoke" Click="BtnAddCustomer_OnClick"/>
+              <Button Content="Edit" Height="50" Width="100" FontFamily="Tahoma" FontWeight="Black" Margin="10" Name="BtnEditCustomer" Background="WhiteSmoke" Click="BtnEditCustomer_OnClick"/>
               <Button Content="Delete" Height="50" Width="100" FontFamily="Tahoma" FontWeight="Black" Margin="10" Name="BtnDeleteCustomer" Background="WhiteSmoke" Click="BtnDelete_OnClick"/>
            </StackPanel>
       </StackPanel>
@@ -96,7 +105,7 @@
       <Border Grid.Row="1" Margin="5" Background="Aqua" Name="ProductsPanel" Visibility="Collapsed" HorizontalAlignment="Stretch" BorderThickness="2" BorderBrush="Gray">
       <StackPanel Margin="5" >
         <Label FontFamily="Tahoma" FontSize="35" FontWeight="Bold" HorizontalAlignment="Center" Margin="10">Products</Label>
-        <ListView ItemsSource="{Binding Source= StaticResource Productcollection}" Name="listViewProduct">
+        <ListView ItemsSource="{Binding Source= StaticResource Productcollection}" Name="listViewProduct" SelectionChanged="ListViewProduct_OnSelectionChanged">
           <ListView.View>
             <GridView AllowsColumnReorder="True" ColumnHeaderToolTip="Customer Information">
               <GridView.ColumnHeaderContextMenu>
@@ -112,9 +121,13 @@
             </GridView>
           </ListView.View>
         </ListView>
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-          <Button Content="Add Product" Height="50" Width="100" FontFamily="Tahoma" FontWeight="Black" Margin="10" Name="BtnAddProduct" Background="WhiteSmoke" />
-          <Button Content="Edit" Height="50" Width="100" FontFamily="Tahoma" FontWeight="Black" Margin="10" Name="BtnEditProduct" Background="WhiteSmoke" />
+          <WrapPanel Margin="10" HorizontalAlignment="Left">
+              <Label Margin="2" FontWeight="Bold">Detail Info:</Label>
+              <Label Margin="2" Content="Click on each Row!" Name="ProductDetail"></Label>
+          </WrapPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+          <Button Content="Add Product" Height="50" Width="100" FontFamily="Tahoma" FontWeight="Black" Margin="10" Name="BtnAddProduct" Background="WhiteSmoke" Click="BtnAddProduct_OnClick"/>
+          <Button Content="Edit" Height="50" Width="100" FontFamily="Tahoma" FontWeight="Black" Margin="10" Name="BtnEditProduct" Background="WhiteSmoke" Click="BtnEditProduct_OnClick"/>
           <Button Content="Delete" Height="50" Width="100" FontFamily="Tahoma" FontWeight="Black" Margin="10" Name="BtnDeleteProduct" Background="WhiteSmoke" Click="BtnDelete_OnClick"/>
         </StackPanel>
       </StackPanel>

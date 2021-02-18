@@ -59,5 +59,10 @@ namespace Productmanagement.Model.BaseClasses
       var index = _productCollection.IndexOf(newProduct);
       _productCollection[index] = product;
     }
+
+    public int GetNextId()
+    {
+      return _productCollection.Any() ? _productCollection.Max(p => p.Id) + 1 : 1;
+    }
   }
 }

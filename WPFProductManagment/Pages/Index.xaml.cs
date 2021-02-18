@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Text;
 using System.Windows;
@@ -25,9 +26,28 @@ namespace WPFProductManagment.View.Pages
     private CustomerCollection cmCollection = new CustomerCollection();
     private ProductCollection prCollection = new ProductCollection();
 
+    ObservableCollection<Employee> Employees = new ObservableCollection<Employee>();
+    ObservableCollection<Customer> Customers = new ObservableCollection<Customer>();
+    ObservableCollection<Product> Products = new ObservableCollection<Product>();
+
+    public Employee CurrentEmployee { get; set; } = new Employee();
+    public Customer CurrentCustomer { get; set; } = new Customer();
+    public Product CurrentProduct { get; set; } = new Product();
+
     public Index()
     {
       InitializeComponent();
+      FillData();
+      listViewCustomer.ItemsSource = Customers;
+      listViewEmployee.ItemsSource = Employees;
+      listViewProduct.ItemsSource = Products;
+    }
+
+    private void FillData()
+    {
+      Employees = emCollection.Employeescollection;
+      Customers = cmCollection.Customercollection;
+      Products = prCollection.Productcollection;
     }
 
     private void Btn_OnClick(object sender, RoutedEventArgs e)
@@ -43,7 +63,6 @@ namespace WPFProductManagment.View.Pages
       {
         HomePanel.Visibility = Visibility.Collapsed;
         EmployeesPanel.Visibility = Visibility.Visible;
-        listViewEmployee.ItemsSource = emCollection.Employeescollection;
         ProductsPanel.Visibility = Visibility.Collapsed;
         CustomersPanel.Visibility = Visibility.Collapsed;
       }
@@ -53,14 +72,12 @@ namespace WPFProductManagment.View.Pages
         EmployeesPanel.Visibility = Visibility.Collapsed;
         ProductsPanel.Visibility = Visibility.Collapsed;
         CustomersPanel.Visibility = Visibility.Visible;
-        listViewCustomer.ItemsSource = cmCollection.Customercollection;
       }
       else if ((string)((Button)sender).Content == "Products")
       {
         HomePanel.Visibility = Visibility.Collapsed;
         EmployeesPanel.Visibility = Visibility.Collapsed;
         ProductsPanel.Visibility = Visibility.Visible;
-        listViewProduct.ItemsSource = prCollection.Productcollection;
         CustomersPanel.Visibility = Visibility.Collapsed;
       }
     }
@@ -92,42 +109,114 @@ namespace WPFProductManagment.View.Pages
       {
         if (listViewEmployee.SelectedItem == null)
         {
-          return;
+          MessageBox.Show("Please select a row to delete!");
         }
         else if (MessageBox.Show("Are you sure for delete?", "Delete employee", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
         {
           emCollection.Employeescollection.Remove((Employee)listViewEmployee.SelectedItem);
+          EmployeeDetail.Content = "---";
         }
       }
       else if (((Button)sender).Name == "BtnDeleteCustomer")
       {
         if (listViewCustomer.SelectedItem == null)
         {
-          return;
+          MessageBox.Show("Please select a row to delete!");
         }
         else if (MessageBox.Show("Are you sure for delete?", "Delete customer", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
         {
           cmCollection.Customercollection.Remove((Customer)listViewCustomer.SelectedItem);
+          CustomerDetail.Content = "---";
         }
       }
       else if (((Button)sender).Name == "BtnDeleteProduct")
       {
         if (listViewProduct.SelectedItem == null)
         {
-          return;
+          MessageBox.Show("Please select a row to delete!");
         }
         else if (MessageBox.Show("Are you sure for delete?", "Delete product", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
         {
           prCollection.Productcollection.Remove((Product)listViewProduct.SelectedItem);
+          ProductDetail.Content = "---";
         }
       }
     }
 
+    private void ListViewEmployee_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+      if (listViewEmployee.SelectedIndex >= 0)
+      {
+        CurrentEmployee = listViewEmployee.SelectedItem as Employee;
+        EmployeeDetail.Content = CurrentEmployee.GetBasicInfo();
+      }
+    }
+
+    private void ListViewCustomer_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+      if (listViewCustomer.SelectedIndex >= 0)
+      {
+        CurrentCustomer = listViewCustomer.SelectedItem as Customer;
+        CustomerDetail.Content = CurrentCustomer.GetBasicInfo();
+      }
+    }
+
+    private void ListViewProduct_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+      if (listViewProduct.SelectedIndex >= 0)
+      {
+        CurrentProduct=listViewProduct.SelectedItem as Product;
+        ProductDetail.Content = CurrentProduct.GetBasicInfo();
+      }
+    }
+
+    private void BtnAddEmployee_OnClick(object sender, RoutedEventArgs e)
+    {
+      AddEmployeeWindow add = new AddEmployeeWindow(emCollection);
+      add.ShowDialog();
+    }
+
     private void BtnEditEmployee_OnClick(object sender, RoutedEventArgs e)
     {
-      EditEmployeeWindow edit = new EditEmployeeWindow();
-      edit.Show();
-      var itemList = listViewEmployee.SelectedItem;
+      if (listViewEmployee.SelectedIndex >= 0)
+      {
+        CurrentEmployee = listViewEmployee.SelectedItem as Employee;
+        AddEmployeeWindow edit = new AddEmployeeWindow(emCollection, CurrentEmployee);
+        edit.ShowDialog();
+      }
+    }
+
+    private void BtnAddCustomer_OnClick(object sender, RoutedEventArgs e)
+    {
+      AddEditCustomerWindow addcustomer = new AddEditCustomerWindow(cmCollection);
+      addcustomer.ShowDialog();
+    }
+
+    private void BtnEditCustomer_OnClick(object sender, RoutedEventArgs e)
+    {
+      if (listViewCustomer.SelectedIndex >= 0)
+      {
+        CurrentCustomer = listViewCustomer.SelectedItem as Customer;
+        AddEditCustomerWindow editCustomer =
+          new AddEditCustomerWindow(cmCollection, CurrentCustomer);
+        editCustomer.ShowDialog();
+      }
+    }
+
+    private void BtnAddProduct_OnClick(object sender, RoutedEventArgs e)
+    {
+      AddEditProductWindow addproduct = new AddEditProductWindow(prCollection);
+      addproduct.ShowDialog();
+    }
+
+    private void BtnEditProduct_OnClick(object sender, RoutedEventArgs e)
+    {
+      if (listViewProduct.SelectedIndex >= 0)
+      {
+        CurrentProduct = listViewProduct.SelectedItem as Product;
+        AddEditProductWindow editProduct = new AddEditProductWindow(prCollection, CurrentProduct);
+        editProduct.ShowDialog();
+      }
     }
   }
 }

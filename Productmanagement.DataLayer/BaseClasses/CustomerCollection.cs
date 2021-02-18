@@ -74,5 +74,10 @@ namespace Productmanagement.Model.BaseClasses
       int index = _customerCollection.IndexOf(newCustomer);
       _customerCollection[index] = customer;
     }
+
+    public int GetNextId()
+    {
+      return _customerCollection.Any() ? _customerCollection.Max(c => c.Id) + 1 : 1;
+    }
   }
 }

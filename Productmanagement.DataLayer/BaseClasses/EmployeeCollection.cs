@@ -49,7 +49,7 @@ namespace Productmanagement.Model.BaseClasses
         });
     }
 
-    public void AddProduct(Employee employee)
+    public void AddEmployee(Employee employee)
     {
       if (employee != null)
       {
@@ -57,18 +57,24 @@ namespace Productmanagement.Model.BaseClasses
       }
     }
 
-    public bool DeleteProduct(string employeeName)
+    public bool DeleteEmployee(string employeeName)
     {
       var employee = _employeesCollection.First(e => e.FullName == employeeName);
       _employeesCollection.Remove(employee);
       return true;
     }
 
-    public void UpdateProduct(Employee employee)
+    public void UpdateEmployee(Employee employee)
     {
       var newemployee = _employeesCollection.First(p => p.Id == employee.Id);
       var index = _employeesCollection.IndexOf(newemployee);
       _employeesCollection[index] = employee;
+    }
+
+    public int GetNextId()
+    {
+      int index = _employeesCollection.Any() ? _employeesCollection.Max(e => e.Id) + 1 : 1;
+      return index;
     }
   }
 }
