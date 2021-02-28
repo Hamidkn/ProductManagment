@@ -5,25 +5,26 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFProductManagment.View.Pages"
         mc:Ignorable="d"
-        Title="AddEditCustomerWindow" Height="380" Width="441">
+        Title="AddEditCustomerWindow" Height="407" Width="441">
     <Grid>
         <StackPanel>
             <DockPanel Margin="10">
-                <Label Content="First Name:" Margin="10"/>
-                <TextBox Name="TxtFirstName" HorizontalAlignment="Right" Width="320"/>
+                <Label Content="First Name:" Margin="10" Width="70"/>
+                <TextBox Name="TxtFirstName" HorizontalAlignment="Right" Width="310"/>
             </DockPanel>
             <DockPanel Margin="10">
                 <Label Content="Last Name:" Margin="10"/>
-                <TextBox Name="TxtLastName" HorizontalAlignment="Right" Width="320"/>
+                <TextBox Name="TxtLastName" HorizontalAlignment="Right" Width="310"/>
             </DockPanel>
             <DockPanel Margin="10">
                 <Label Content="Phone:" Margin="10"/>
-                <TextBox Name="TxtPhone" HorizontalAlignment="Right" Width="320"/>
+                <TextBox Name="TxtPhone" HorizontalAlignment="Right" Width="310" TextChanged="TxtPhone_OnTextChanged"/>
             </DockPanel>
             <DockPanel Margin="10">
                 <Label Content="Address:" Margin="10"/>
-                <TextBox Name="TxtAddress" HorizontalAlignment="Right" Width="320"/>
+                <TextBox Name="TxtAddress" HorizontalAlignment="Right" Width="310"/>
             </DockPanel>
+            <Label Name="lblerror" HorizontalAlignment="Left" Foreground="Red" FontSize="10px" Margin="2" Width="Auto"></Label>
             <DockPanel Margin="10" HorizontalAlignment="Center">
                 <Button x:Name="BtnSave" Content="Save" Width="100" Height="45" Margin="10" Click="BtnSave_OnClick"/>
                 <Button x:Name="BtnCancel" Content="Cancel" Width="100" Height="45" Margin="10" Click="BtnCancel_OnClick"/>

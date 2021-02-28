@@ -42,31 +42,77 @@ namespace WPFProductManagment.View.Pages
     }
     private void BtnSave_OnClick(object sender, RoutedEventArgs e)
     {
-      if (isEdit)
+      bool isValid = true;
+      isValid = CheckValidation();
+      if (isValid)
       {
-        Product product = new Product()
+        if (isEdit)
         {
-          Id = _product.Id,
-          Name = TxtName.Text,
-          Author = TxtAuthor.Text,
-          Price = Convert.ToDecimal(TxtPrice.Text),
-          Availablecount = Convert.ToInt32(TxtAvailable.Text)
-        };
-        _productCollection.UpdateProduct(product);
+          Product product = new Product()
+          {
+            Id = _product.Id,
+            Name = TxtName.Text,
+            Author = TxtAuthor.Text,
+            Price = Convert.ToDecimal(TxtPrice.Text),
+            Availablecount = Convert.ToInt32(TxtAvailable.Text)
+          };
+          _productCollection.UpdateProduct(product);
+        }
+        else
+        {
+          Product product = new Product()
+          {
+            Id = _productCollection.GetNextId(),
+            Name = TxtName.Text,
+            Author = TxtAuthor.Text,
+            Price = Convert.ToDecimal(TxtPrice.Text),
+            Availablecount = Convert.ToInt32(TxtAvailable.Text)
+          };
+          _productCollection.AddProduct(product);
+        }
+
+        Close();
+      }
+    }
+
+    private bool CheckValidation()
+    {
+      bool isValid = true;
+      string name = TxtName.Text.Trim();
+      string author = TxtAuthor.Text.Trim();
+      string price = TxtPrice.Text.Trim();
+      string availablecount = TxtAvailable.Text.Trim();
+
+      if (string.IsNullOrEmpty(name))
+      {
+        isValid = false;
+        lblError.Content = "**Name is not valid!";
+        TxtName.Text = "";
+      }
+      else if (string.IsNullOrEmpty(author))
+      {
+        isValid = false;
+        lblError.Content = "**Author is not valid!";
+        TxtAuthor.Text = "";
+      }
+      else if (!decimal.TryParse(price, out decimal p) || Convert.ToDecimal(price) < 10)
+      {
+        isValid = false;
+        lblError.Content = "**Price is not valid!";
+        TxtPrice.Text = "";
+      }
+      else if (!Int32.TryParse(availablecount, out Int32 a) || Convert.ToInt32(availablecount) < 0)
+      {
+        isValid = false;
+        lblError.Content = "**Availablecount is not valid";
+        TxtAvailable.Text = "";
       }
       else
       {
-        Product product = new Product()
-        {
-          Id = _productCollection.GetNextId(),
-          Name = TxtName.Text,
-          Author = TxtAuthor.Text,
-          Price = Convert.ToDecimal(TxtPrice.Text),
-          Availablecount = Convert.ToInt32(TxtAvailable.Text)
-        };
-        _productCollection.AddProduct(product);
+        lblError.Content = "";
       }
-      Close();
+
+      return isValid;
     }
 
     private void BtnCancel_OnClick(object sender, RoutedEventArgs e)

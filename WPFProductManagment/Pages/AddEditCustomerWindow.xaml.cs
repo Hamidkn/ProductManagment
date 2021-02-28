@@ -42,37 +42,96 @@ namespace WPFProductManagment.View.Pages
 
     private void BtnSave_OnClick(object sender, RoutedEventArgs e)
     {
-      if (isEdit)
+      bool isValid = true;
+      isValid = CheckValidation();
+      if (isValid)
       {
-        Customer customer = new Customer()
+        if (isEdit)
         {
-          Id = _customer.Id,
-          FirstName = TxtFirstName.Text,
-          LastName = TxtLastName.Text,
-          Address = TxtAddress.Text,
-          PhoneNumber = Convert.ToUInt64(TxtPhone.Text)
-        };
-        _cmrCollection.UpdateCustomer(customer);
+          Customer customer = new Customer()
+          {
+            Id = _customer.Id,
+            FirstName = TxtFirstName.Text,
+            LastName = TxtLastName.Text,
+            Address = TxtAddress.Text,
+            PhoneNumber = Convert.ToUInt64(TxtPhone.Text)
+          };
+          _cmrCollection.UpdateCustomer(customer);
+        }
+        else
+        {
+          Customer customer = new Customer()
+          {
+            Id = _cmrCollection.GetNextId(),
+            FirstName = TxtFirstName.Text,
+            LastName = TxtLastName.Text,
+            Address = TxtAddress.Text,
+            PhoneNumber = Convert.ToUInt64(TxtPhone.Text)
+          };
+          _cmrCollection.AddCustomer(customer);
+        }
+
+        Close();
+      }
+    }
+
+    private bool CheckValidation()
+    {
+      bool isValid = true;
+      string firstName = TxtFirstName.Text.Trim();
+      string lastName = TxtLastName.Text.Trim();
+      string address = TxtAddress.Text.Trim();
+      string phoneNumber = TxtPhone.Text.Trim();
+
+      if (string.IsNullOrEmpty(firstName))
+      {
+        isValid = false;
+        lblerror.Content = "**Enter a valid firstname!";
+        TxtFirstName.Text = "";
+      }
+
+      else if (string.IsNullOrEmpty(lastName))
+      {
+        isValid = false;
+        lblerror.Content = "**Enter a valid lastname!";
+        TxtLastName.Text = "";
+      }
+      else if (!ulong.TryParse(phoneNumber, out ulong p))
+      {
+        isValid = false;
+        lblerror.Content = "**Enter valid phone number!";
+        TxtPhone.Text = "";
+      }
+      else if (string.IsNullOrEmpty(address) || address.Contains("Korea"))
+      {
+        isValid = false;
+        lblerror.Content = "**Enter a valid address!";
+        TxtAddress.Text = "";
       }
       else
       {
-        Customer customer = new Customer()
-        {
-          Id = _cmrCollection.GetNextId(),
-          FirstName = TxtFirstName.Text,
-          LastName = TxtLastName.Text,
-          Address = TxtAddress.Text,
-          PhoneNumber = Convert.ToUInt64(TxtPhone.Text)
-        };
-        _cmrCollection.AddCustomer(customer);
+        lblerror.Content = "";
       }
 
-      Close();
+      return isValid;
     }
 
     private void BtnCancel_OnClick(object sender, RoutedEventArgs e)
     {
       Close();
+    }
+
+    private void TxtPhone_OnTextChanged(object sender, TextChangedEventArgs e)
+    {
+      string phoneNumber = TxtPhone.Text.Trim();
+      if (!ulong.TryParse(phoneNumber, out ulong p))
+      {
+        lblerror.Content = "**Enter valid phone number!";
+      }
+      else
+      {
+        lblerror.Content = "";
+      }
     }
   }
 }
