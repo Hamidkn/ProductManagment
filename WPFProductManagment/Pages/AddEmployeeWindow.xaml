@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFProductManagment.View.Pages"
         mc:Ignorable="d"
-        Title="Edit Employee" Height="450" Width="441" ResizeMode="NoResize">
+        Title="Edit Employee" Height="467" Width="441" ResizeMode="NoResize">
   <Grid>
       <StackPanel>
           <DockPanel Margin="10">
@@ -18,7 +18,7 @@
           </DockPanel>
             <DockPanel Margin="10">
                 <Label Content="Phone:" Margin="10"/>
-                <TextBox Name="TxtPhone" HorizontalAlignment="Right" Width="320"/>
+                <TextBox Name="TxtPhone" HorizontalAlignment="Right" Width="320" TextChanged="TxtPhone_OnTextChanged"/>
           </DockPanel>
           <DockPanel Margin="10">
                 <Label Content="Address:" Margin="10"/>
@@ -33,6 +33,7 @@
                 <ComboBoxItem>Management</ComboBoxItem>
             </ComboBox>
           </DockPanel>
+          <Label Name="lblError" HorizontalAlignment="Left" Foreground="Red" FontSize="10px" Width="Auto"></Label>
           <DockPanel Margin="10" HorizontalAlignment="Center">
             <Button x:Name="BtnSave" Content="Save" Width="100" Height="45" Margin="10" Click="BtnSave_OnClick"/>
             <Button x:Name="BtnCancel" Content="Cancel" Width="100" Height="45" Margin="10" Click="BtnCancel_OnClick"/>

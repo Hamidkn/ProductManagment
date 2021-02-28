@@ -49,34 +49,97 @@ namespace WPFProductManagment.View.Pages
 
     private void BtnSave_OnClick(object sender, RoutedEventArgs e)
     {
-      if (isEdit)
+      bool isValid = true;
+      isValid = Validation();
+
+      if (isValid)
       {
-        Employee employee = new Employee()
+        if (isEdit)
         {
-          Id = _employee.Id,
-          FirstName = TxtFirstName.Text,
-          LastName = TxtLastName.Text,
-          PhoneNumber = Convert.ToUInt64(TxtPhone.Text),
-          Address = TxtAddress.Text,
-          Department = (Department)cmbDepartment.SelectedIndex,
-        };
-        _employeeCollection.UpdateEmployee(employee);
+          Employee employee = new Employee()
+          {
+            Id = _employee.Id,
+            FirstName = TxtFirstName.Text,
+            LastName = TxtLastName.Text,
+            PhoneNumber = Convert.ToUInt64(TxtPhone.Text),
+            Address = TxtAddress.Text,
+            Department = (Department)cmbDepartment.SelectedIndex,
+          };
+          _employeeCollection.UpdateEmployee(employee);
+        }
+        else
+        {
+          Employee employee = new Employee()
+          {
+            Id = _employeeCollection.GetNextId(),
+            FirstName = TxtFirstName.Text,
+            LastName = TxtLastName.Text,
+            PhoneNumber = Convert.ToUInt64(TxtPhone.Text),
+            Address = TxtAddress.Text,
+            Department = (Department)cmbDepartment.SelectedIndex
+          };
+          _employeeCollection.AddEmployee(employee);
+        }
+
+        Close();
+      }
+    }
+
+    private bool Validation()
+    {
+      bool isValid = true;
+      string firstName = TxtFirstName.Text.Trim();
+      string lastName = TxtLastName.Text.Trim();
+      string phoneNumber = TxtPhone.Text.Trim();
+      string address = TxtAddress.Text.Trim();
+      int department = cmbDepartment.SelectedIndex;
+
+      if (string.IsNullOrEmpty(firstName))
+      {
+        isValid = false;
+        lblError.Content = "Enter a valid firstname!";
+        TxtFirstName.Text = "";
+      }
+
+      else if (string.IsNullOrEmpty(lastName))
+      {
+        isValid = false;
+        lblError.Content = "Enter a valid lastname!";
+        TxtLastName.Text = "";
+      }
+
+      else if (!ulong.TryParse(phoneNumber, out ulong p))
+      {
+        isValid = false;
+        lblError.Content = "Enter valid phone number!";
+        TxtPhone.Text = "";
+      }
+      else if (string.IsNullOrEmpty(address) || address.Contains("Korea"))
+      {
+        isValid = false;
+        lblError.Content = "Enter a valid address!";
+        TxtAddress.Text = "";
+      }
+      else if (department < 0)
+      {
+        isValid = false;
+        lblError.Content = "**Department is not valid!";
+      }
+
+      return isValid;
+    }
+
+    private void TxtPhone_OnTextChanged(object sender, TextChangedEventArgs e)
+    {
+      string phoneNumber = TxtPhone.Text.Trim();
+      if (!ulong.TryParse(phoneNumber, out ulong p))
+      {
+        lblError.Content = "**Enter valid phone number!";
       }
       else
       {
-        Employee employee = new Employee()
-        {
-          Id = _employeeCollection.GetNextId(),
-          FirstName = TxtFirstName.Text,
-          LastName = TxtLastName.Text,
-          PhoneNumber = Convert.ToUInt64(TxtPhone.Text),
-          Address = TxtAddress.Text,
-          Department = (Department)cmbDepartment.SelectedIndex
-        };
-        _employeeCollection.AddEmployee(employee);
+        lblError.Content = "";
       }
-
-      Close();
     }
   }
 }
