@@ -19,7 +19,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Productmanagement.DataLayer\Productmanagement.Model.csproj" />
+    <PackageReference Include="entityframework" Version="6.4.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Productmanagement.Model1\Productmanagement.Model.csproj" />
   </ItemGroup>
 
   <ItemGroup>
