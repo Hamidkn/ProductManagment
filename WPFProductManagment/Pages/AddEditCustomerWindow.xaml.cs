@@ -10,7 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Productmanagement.Model.BaseClasses;
-using Productmanagement.Model.Models;
+using Productmanagement.Models;
 
 namespace WPFProductManagment.View.Pages
 {
@@ -60,7 +60,7 @@ namespace WPFProductManagment.View.Pages
         }
         else
         {
-          Customer customer = new Customer()
+          Productmanagement.Model1.Customer customer = new Productmanagement.Model1.Customer()
           {
             Id = _cmrCollection.GetNextId(),
             FirstName = TxtFirstName.Text,

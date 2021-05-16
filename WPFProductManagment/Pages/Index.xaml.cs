@@ -12,7 +12,10 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Productmanagement.Model.BaseClasses;
-using Productmanagement.Model.Models;
+using Productmanagement.Model1;
+using Customer = Productmanagement.Models.Customer;
+using Employee = Productmanagement.Model.Models.Employee;
+using Product = Productmanagement.Model.Models.Product;
 
 namespace WPFProductManagment.View.Pages
 {
@@ -21,9 +24,10 @@ namespace WPFProductManagment.View.Pages
   /// </summary>
   public partial class Index : Window
   {
+    public static ProductManagementEntities dataset = new ProductManagementEntities();
     private Border border = new Border();
     private EmployeeCollection emCollection = new EmployeeCollection();
-    private CustomerCollection cmCollection = new CustomerCollection();
+    private CustomerCollection cmCollection = new CustomerCollection(dataset);
     private ProductCollection prCollection = new ProductCollection();
 
     ObservableCollection<Employee> Employees = new ObservableCollection<Employee>();
